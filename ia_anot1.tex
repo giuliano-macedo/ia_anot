@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[paper=a4paper,margin=.5in]{geometry}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\title{Anotações de IA} 
+\author{Giuliano Oliveira De Macedo}
+\begin{document}
+\fontsize{16}{32} \selectfont
+\maketitle
+\setcounter{page}{1}
+\section{Regressão Linear}
+\subsection{Algébrico}
+	Definições \\
+	$h(x)=\theta_1x+\theta_0$\\
+	$J(h)=\frac{1}{2m}\sum\limits_{i=0}^{m}((h(x_i)-y_i)^2)$\\
+	Algoritmo : sendo $i$ a iteração \\
+	$ \theta^i_1= \theta_1^{i-1} - \alpha \frac{\partial}{\partial \theta_1^{i-1}}J \to  \\
+	 \theta_1^{i-1} - \alpha \frac{1}{m}\sum\limits_{i=0}^{m}((h(x_i)-y_i)x)$\\\\
+	$ \theta^i_0= \theta_0^{i-1} - \alpha \frac{\partial}{\partial \theta_0^{i-1}}J \to \\
+\ \theta_0^{i-1} - \alpha \frac{1}{m}\sum\limits_{i=0}^{m}((h(x_i)-y_i)1)$
+\pagebreak
+\subsection{Algebra linear}
+	Definições \\
+	sendo $x'$ a entrada\\
+	$X=\begin{bmatrix}
+		1 & x'_1 \\
+		1 & x'_2 \\
+		1 & .. \\
+		1 & x'_m \\
+	\end{bmatrix}$ ,
+	$\Theta=\begin{bmatrix}
+		\theta_0\\
+		\theta_1
+	\end{bmatrix}$ \\ \\
+	$H=X \cdot \Theta$ \\
+	$E=H - Y $ \\
+	$J=\frac{1}{2m}(E^T \cdot E)$ \\
+	Algoritmo : sendo $i$ a iteração \\
+	$\Theta_i=\Theta_{i-1} - \frac{\alpha}{m}(X^T \cdot E)$\\
+	\pagebreak
+	\subsection{Várias variaveis algebra linear}
+	$
+	X=\begin{bmatrix}
+	1 & x^{(1)}_1 & x^{(1)}_2 & x^{(1)}_3 \\
+	1 & x^{(2)}_1 & x^{(2)}_2 & x^{(2)}_3 \\
+	1 & x^{(3)}_1 & x^{(3)}_2 & x^{(3)}_3 \\
+	\end{bmatrix},
+	\Theta=\begin{bmatrix}
+	\theta_0 \\
+	\theta_1 \\
+	\theta_2 \\
+	\theta_3
+	\end{bmatrix}\\
+	$
+
+	\subsection{Normalização}
+	
+	$X_k=\frac{x_k-\mu_k}{\sigma_k}\\$
+	$\mu_k=\frac{1}{m}\sum\limits_{i=1}^{m}x_k^{(i)}\\$
+	$\sigma_k=\sqrt{\frac{1}{m}\sum\limits_{i=1}^{m}(x_k^{(i)}-\mu_k)^2}$
+
+
+\end{document}
