@@ -60,5 +60,22 @@
 	$\mu_k=\frac{1}{m}\sum\limits_{i=1}^{m}x_k^{(i)}\\$
 	$\sigma_k=\sqrt{\frac{1}{m}\sum\limits_{i=1}^{m}(x_k^{(i)}-\mu_k)^2}$
 
+	\subsection{Regressão Logistica}
+	$X,Y$ são os mesmos da regressão linear com multiplas variaveis matricial \\
+	Na regressão logística a seguinte inequação deve ser seguida $0 \leq h_\theta(x) \leq 1$.
+
+	Portanto sendo $g(z)=\frac{1}{1+e^{-z}}$,$z=X\cdot\Theta$\\
+	então\\
+	$h_\Theta(x)=g(z)$ \\
+	Contudo, o $J$ terá que mudar pois se não o algorítmo não irá convergir pelo fato do J não 
+	ser mais convexo.\\
+
+	$J(\Theta)=\frac{1}{m}\sum\limits_{i=1}^{m}\text{custo}(h_\theta(x^{(i)}),y^{(i)})$ \\
+	$\text{custo}(h_{\theta},y)=-y.\log(h_{\theta}(x)-(1-y))\log(1-h_{\theta}(x))$ \\
+	E o algorítmo continua o mesmo da regressão linear matricial
+
+
+
+
 
 \end{document}
