@@ -23,13 +23,16 @@
     % We will generate all images so they have a width \maxwidth. This means
     % that they will get their normal width if they fit onto the page, but
     % are scaled down if they would overflow the margins.
+
     \makeatletter
     \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
     \else\Gin@nat@width\fi}
     \makeatother
     \let\Oldincludegraphics\includegraphics
     % Set max figure width to be 80% of text width, for now hardcoded.
-    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+
+    %\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+
     % Ensure that by default, figures have no caption (until we provide a
     % proper Figure object with a Caption API and a way to capture that
     % in the conversion process - todo).
@@ -586,17 +589,37 @@ Comparando estas métricas:
 \end{itemize}
 
 Todas estas são \textbf{funções de perda}, porque queremos minimizá-las.
+\clearpage
 
-    \hypertarget{eixos-numpy}{%
+\hypertarget{eixos-numpy}{%
 \section{Eixos NumPy}\label{eixos-numpy}}
 
 \begin{itemize}
 \tightlist
 \item
-  Axis 0
+  Axis 0 - Linha; \textbf{Operações por coluna = Axis 1, porque ele faz
+  linha a linha sobre uma mesma coluna}
 \item
-  Axis 1
+  Axis 1 - Coluna; \textbf{Operações por linha = Axis 0, porque ele faz
+  linha a linha sobre uma mesma coluna}
 \end{itemize}
+
+    Por exemplo, se eu quero saber qual é a média de um valores de uma mesma
+coluna, eu devo realizar:
+
+\begin{verbatim}
+np.mean(array, axis=0)
+\end{verbatim}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{imgs/axis_numpy.jpg}
+\end{figure}
+
+    Logo, temos de pegar a média e o desvio padrão dos valores de cada
+coluna, que seria referente a um dado.
+
+    A Normalização vai deixar os dados numa mesma escala.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{1}{\hspace{4pt}}
