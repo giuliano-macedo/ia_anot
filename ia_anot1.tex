@@ -1,5 +1,6 @@
 \documentclass[12pt]{article}
     
+    \usepackage[portuguese]{babel}
     \usepackage[breakable]{tcolorbox}
     \tcbset{nobeforeafter} % prevents tcolorboxes being placing in paragraphs
     \usepackage{float}
@@ -29,8 +30,8 @@
     % proper Figure object with a Caption API and a way to capture that
     % in the conversion process - todo).
     \usepackage{caption}
-    \DeclareCaptionLabelFormat{nolabel}{}
-    \captionsetup{labelformat=nolabel}
+    % \DeclareCaptionLabelFormat{nolabel}{}
+    % \captionsetup{labelformat=nolabel}
 
     \usepackage{adjustbox} % Used to constrain images to a maximum size 
     \usepackage{xcolor} % Allow colors to be defined
@@ -446,12 +447,12 @@ Considere \(x'\) a entrada, então:
   \(X=\begin{bmatrix}  1 & x'_1 \\  1 & x'_2 \\  1 & .. \\  1 & x'_m \\  \end{bmatrix}\)
   ,
 \item
-  \(\Theta=\begin{bmatrix}  \theta_0\\  \theta_1  \end{bmatrix}\)
+  \(\theta=\begin{bmatrix}  \theta_0\\  \theta_1  \end{bmatrix}\)
 
   \begin{itemize}
   \tightlist
   \item
-    \(H=X \cdot \Theta\)
+    \(H=X \cdot \theta\)
   \item
     \(E=H - Y\)
   \item
@@ -463,7 +464,7 @@ Considere \(x'\) a entrada, então:
   \begin{itemize}
   \tightlist
   \item
-    \(\Theta_i=\Theta_{i-1} - \frac{\alpha}{m}(X^T \cdot E)\)
+    \(\theta_i=\theta_{i-1} - \frac{\alpha}{m}(X^T \cdot E)\)
   \end{itemize}
 
   Sendo que a cada iteração, o valor de \(H\), \(E\) e \(J\) devem ser
@@ -473,68 +474,7 @@ Considere \(x'\) a entrada, então:
 \hypertarget{muxfaltiplas-variuxe1veis}{%
 \subsubsection{Múltiplas Variáveis}\label{muxfaltiplas-variuxe1veis}}
 
-\(X=\begin{bmatrix} 1 & x^{(1)}_1 & x^{(1)}_2 & x^{(1)}_3 \\ 1 & x^{(2)}_1 & x^{(2)}_2 & x^{(2)}_3 \\ 1 & x^{(3)}_1 & x^{(3)}_2 & x^{(3)}_3 \\ \end{bmatrix}, \Theta=\begin{bmatrix} \theta_0 \\ \theta_1 \\ \theta_2 \\ \theta_3 \end{bmatrix}\)
-
-    \hypertarget{regressuxe3o-loguxedstica}{%
-\subsection{\texorpdfstring{\textbf{Regressão
-Logística}}{Regressão Logística}}\label{regressuxe3o-loguxedstica}}
-
-\hypertarget{observauxe7uxf5es}{%
-\subsubsection{Observações}\label{observauxe7uxf5es}}
-
-\begin{itemize}
-\item
-  Na Regressão Logística, temos a
-  \textbf{Função sigmóide}
-  sendo um componente de $H_{\theta}$.
-\item
-  \(\hat y\) = y predito = \(h(x)\)
-\end{itemize}
-
-\(X,Y\) são os mesmos da regressão linear com multiplas variaveis
-matricial
-
-Na regressão logística a seguinte inequação deve ser seguida
-\(0 \leq h_\theta(x) \leq 1\).
-
-\begin{itemize}
-\item
-  Se \(h(\theta) \geq 0.5 \to \hat y\) = 1
-\item
-  Se \(h(\theta) \lt 0.5 \to \hat y\) = 0
-\end{itemize}
-
-Portanto sendo \(g(z)=\frac{1}{1+e^{-z}}\),\(z=X\cdot\Theta\)
-
-Então:
-
-\begin{itemize}
-\tightlist
-\item
-  \(h_\Theta(x)=g(z)\)
-\end{itemize}
-
-Contudo, o \(J\) terá que mudar pois se não o algorítmo não irá
-convergir pelo fato do J não ser mais convexo.
-
-\begin{itemize}
-\item
-  \(J(\Theta)=\frac{1}{m}\sum\limits_{i=1}^{m}\text{custo}(h_\theta(x^{(i)}),y^{(i)})\)
-\item
-  \(\text{custo}(h_{\theta},y)=-y.\log(h_{\theta}(x)-(1-y)).\log(1-h_{\theta}(x))\)
-\end{itemize}
-
-E o resto algorítmo continua o mesmo da Regressão Linear na sua forma
-matricial!
-
-A \textbf{Acurácia} é a média de todos os resultados corretos e mostra
-quanto o nosso modelo está acertando. A mesma pode ser descrita como:
-
-\begin{itemize}
-\tightlist
-\item
-  \(acc=\frac{1}{m}\sum\limits_{i=0}^{num\_it\_train}corretos\)
-\end{itemize}
+\(X=\begin{bmatrix} 1 & x^{(1)}_1 & x^{(1)}_2 & x^{(1)}_3 \\ 1 & x^{(2)}_1 & x^{(2)}_2 & x^{(2)}_3 \\ 1 & x^{(3)}_1 & x^{(3)}_2 & x^{(3)}_3 \\ \end{bmatrix}, \theta=\begin{bmatrix} \theta_0 \\ \theta_1 \\ \theta_2 \\ \theta_3 \end{bmatrix}\)
 
     \hypertarget{muxe9tricas-de-avaliauxe7uxe3o-de-regressuxe3o}{%
 \subsection{Métricas de avaliação de
@@ -575,7 +515,79 @@ Comparando estas métricas:
 \end{itemize}
 
 Todas estas são \textbf{funções de perda}, porque queremos minimizá-las.
-\clearpage
+
+\hypertarget{regressuxe3o-loguxedstica}{%
+\subsection{\texorpdfstring{\textbf{Regressão
+Logística}}{Regressão Logística}}\label{regressuxe3o-loguxedstica}}
+
+\hypertarget{observauxe7uxf5es}{%
+\subsubsection{Observações}\label{observauxe7uxf5es}}
+
+\begin{itemize}
+\item
+  Na Regressão Logística, temos a \textbf{Função sigmóide} sendo um
+  componente de \(H_{\theta}\).
+\item
+  \(\hat y\) = y predito = \(h(x)\) = \(H_{\theta}\).
+\end{itemize}
+
+\(X,Y\) são os mesmos da regressão linear com multiplas variaveis
+matricial
+
+Na regressão logística a seguinte inequação deve ser seguida
+\(0 \leq h_\theta(x) \leq 1\).
+
+\begin{itemize}
+\item
+  Se \(h(\theta) \geq 0.5 \to \hat y\) = 1
+\item
+  Se \(h(\theta) \lt 0.5 \to \hat y\) = 0
+\end{itemize}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\linewidth]{imgs/curve-logistic.png}
+  \caption{Função Sigmóide ou Logística.}
+\end{figure}
+
+Portanto sendo \(g(z)=\frac{1}{1+e^{-z}}\),\(z=X\cdot\theta\)
+
+Então:
+
+\begin{itemize}
+\tightlist
+\item
+  \(h_\theta(x)=g(z)\)
+\end{itemize}
+
+Contudo, o \(J\) terá que mudar pois se não o algorítmo não irá
+convergir pelo fato do J não ser mais convexo.
+
+\begin{itemize}
+\tightlist
+\item
+  \(J(\theta)=\frac{1}{m}\sum\limits_{i=1}^{m}\text{custo}(h_\theta(x^{(i)}),y^{(i)})\)
+\end{itemize}
+
+Onde \(m\) é a quantidade de linhas.
+
+\begin{itemize}
+\tightlist
+\item
+  \(\text{custo}(h_\theta(x),y)=-y.\log(h_\theta(x))-(1-y).\log(1-(h_\theta(x)))\)
+\end{itemize}
+
+E o resto algorítmo continua o mesmo da Regressão Linear na sua forma
+matricial!
+
+A \textbf{Acurácia} é a média de todos os resultados corretos e mostra
+quanto o nosso modelo está acertando. A mesma pode ser descrita como:
+
+\begin{itemize}
+\tightlist
+\item
+  \(acc=\frac{1}{m}\sum\limits_{i=0}^{num\_it\_train}\text{corretos}\)
+\end{itemize}
 
 \hypertarget{eixos-numpy}{%
 \section{Eixos NumPy}\label{eixos-numpy}}
@@ -600,6 +612,7 @@ np.mean(array, axis=0)
 \begin{figure}
   \centering
   \includegraphics[width=0.8\linewidth]{imgs/axis_numpy.jpg}
+  \caption{Eixos NumPy.}
 \end{figure}
 
     Logo, temos de pegar a média e o desvio padrão dos valores de cada
