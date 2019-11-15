@@ -1,0 +1,13 @@
+digraph {
+    rankdir=LR;
+    node[shape=circle]
+    x1->n1;
+    x1->n2;
+    x1->n3;
+    x2->n1;
+    x2->n2;
+    x2->n3;
+    n1->nF;
+    n2->nF;
+    n3->nF;
+}

@@ -589,6 +589,177 @@ quanto o nosso modelo está acertando. A mesma pode ser descrita como:
   \(acc=\frac{1}{m}\sum\limits_{i=0}^{num\_it\_train}\text{corretos}\)
 \end{itemize}
 
+\hypertarget{redes-neurais}{%
+\subsection{\texorpdfstring{\textbf{Redes
+Neurais}}{Redes Neurais}}\label{redes-neurais}}
+
+\emph{Variáveis em letra maíuscula representa um \textbf{vetor} e letra
+minúscula um \textbf{escalar}.}
+
+Para Redes Neurais, utilizaremos a seguinte equação
+
+\(Z = W \cdot X + b\)
+
+\begin{itemize}
+\item
+  Os \textbf{pesos} eram representados por \(\Theta\), agora é
+  representado por \(W\).
+\item
+  \(X\) são os dades de entrada da rede.
+\item
+  b(bias) é o viés da rede, ou seja, é como um intercepto adicionado em
+  uma equação linear. É um parâmetro adicional na Rede Neural que é
+  usado para ajustar a saída junto com a soma ponderada das entradas no
+  neurônio. Além disso, o valor da polarização permite mudar a função de
+  ativação para a direita ou esquerda.
+\end{itemize}
+
+Partido da seguinte Rede Neural:
+
+\includegraphics{imgs/graphviz.png}
+
+\emph{Obs: A quantidade de camadas de uma Rede Neural é contabilizada a
+partir da quantidade de camadas desconsiderando a entrada, ou seja,
+temos duas camadas nesse exemplo, uma oculta e uma de saída.}
+
+\(X1\) e \(X2\) são as entradas da rede, onde estes, por sua vez, são
+vetores.
+
+Onde \(n1, n2, n3\) e \(nF\) representa o neurônio 1, neurônio 2,
+neurônio 3 e neurônio final(saída da rede), respectivamente.
+
+Tanto na Regressão Linear quanto na Logística, tinhamos que uma
+determinada entrada(\(X\)) era representada com a dimensão \(m x n\),
+onde \(m\) era a quantidade de varíaveis desse vetor, ou seja, cada
+\textbf{linha} era um dado diferente.
+
+Porém, em Redes Neurais, temos que os mesmos dados são utilizados de
+forma \textbf{Transposta}.
+
+\textbf{A dimensão dos cada vetores de entrada é dada da seguinte
+maneira:}
+
+Para \(W^{[1]}\), temos que a quantidade de linhas é a quantidade de
+neurônios na camada oculta e as colunas desse vetor será a quantidade de
+entradas na rede!
+
+\begin{itemize}
+\tightlist
+\item
+  \(W^{[1]} \rightarrow\) qtd de neurônios na camada oculta x quantidade
+  de variáveis de entrada.
+\item
+  \(W^{[1]} \rightarrow 3 x 2\).
+\end{itemize}
+
+\$ W\textsuperscript{\{{[}1{]}\}=\textbackslash{}begin\{bmatrix\}
+W\_1}\{{[}1{]}\} \&\& W\_1\^{}\{{[}2{]}\} \textbackslash{}
+W\_2\^{}\{{[}1{]}\} \&\& W\_2\^{}\{{[}2{]}\} \textbackslash{}
+W\_3\^{}\{{[}1{]}\} \&\& W\_3\^{}\{{[}2{]}\} \textbackslash{}
+\textbackslash{}end\{bmatrix\} \$
+
+Para \(b^{[1]}\), temos que este sempre será um vetor coluna! Ou seja,
+\(nx1\), onde \(n\) é a quantidade de neurônios na camada oculta.
+
+\$n= \$\emph{Quantidade de neurônios na camada oculta(linhas);}
+
+\begin{itemize}
+\tightlist
+\item
+  \(b^{[1]} \rightarrow\) qtd de neurônios na camada oculta x 1.
+\item
+  \(b^{[1]} \rightarrow 3 x 1\).
+\end{itemize}
+
+\(b^{[1]}=\begin{bmatrix}  b_1^{[1]} \\  b_2^{[1]} \\  b_3^{[1]} \\  \end{bmatrix}\)
+
+Por fim, temos que \(X\) tem dimensão \(kxm\), onde cada \textbf{linha}
+é uma entrada, ou seja, um conjunto de dados diferente e cada
+\textbf{coluna} é uma variável.
+
+\$k= \$\emph{Quantidade de entradas(linhas);}
+
+\$m = \$\emph{Tamanho da entrada(colunas);}
+
+Exemplo:
+
+\(X=\begin{bmatrix}  X_1 \\  X_2 \\  \end{bmatrix} \rightarrow X=\begin{bmatrix}  X_1^{[0]} && X_1^{[1]} && \cdots && X_1^{[m]} \\  X_2^{[0]} && X_2^{[1]} && \cdots && X_2^{[m]} \\  \end{bmatrix}\)
+
+Partindo dessa mesma lógica, podemos perceber que, na segunda camada, é
+esperado que \(W\) e \(b\) tenham as seguintes dimensões:
+
+\(W_{1xn}\) e \(b_{1x1}\), ou seja, um \textbf{escalar}! Pois só temos
+\textbf{1} neurônio nessa camada!
+
+\$ W\textsuperscript{\{{[}2{]}\}=\textbackslash{}begin\{bmatrix\}
+W\_1}\{{[}1{]}\} \&\& W\_1\^{}\{{[}2{]}\} \&\&
+W\_1\^{}\{{[}3{]}\}\textbackslash{} \textbackslash{}end\{bmatrix\} \$
+
+\hypertarget{propagation}{%
+\subsubsection{Propagation}\label{propagation}}
+
+\emph{Obs: Para este exemplo, a função de ativação que está sendo
+utilizada é a sigmóide e está sendo considerado que uma entrada possui 4
+varíaveis.}
+
+A propagação é a fase na rede neural que é obtido a saída do modelo, ou
+seja, a saída do mesmo será \(A^{[2]}\), nesse contexto, é mesma coisa
+que \(g(Z) \rightarrow \hat{y} \rightarrow H_{\Theta}\), ou seja, é o
+que foi predito!
+
+\(Z^{[1]}_{3x4} = W^{[1]}_{3x2} \cdot X_{2x4} + B^{[1]}_{3x1}\)
+
+\(A^{[1]}_{3x4} = g^{[1]}(Z^{[1]})\)
+
+\(Z^{[2]}_{1x4} = W^{[2]}_{1x3} \cdot A^{[1]}_{3x4} + B^{[2]}_{1x1}\)
+
+\(A^{[2]}_{1x4} = g^{[2]}(Z^{[2]}_{1xm})\)
+
+\hypertarget{backpropagation}{%
+\subsubsection{Backpropagation}\label{backpropagation}}
+
+A retropropagação é a fase onde atualiza o valor das variáveis da rede,
+no intuito de melhorar o resultado final. Após calcular o loss na fase
+de progação, é possível melhorar o resultado do modelo. Essa fase
+consiste na aplicação da regra da cadeia(chain rule).
+
+O \emph{loss} é calculado para saber o quão bom está o modelo e este é
+importante para ser utilizado na fase de
+retropropagação(backpropagation).
+
+\(L(A^{[2]}_{1xm}, Y_{1xm}) = -Y \cdot log (A^{[2]}) - (1 - Y) \cdot log (1 - A^{[2]})\)
+
+\(\frac{\partial L}{\partial A^{[2]}} = A^{[2]} - Y\)
+
+\(\frac{\partial L}{\partial W^{[2]}} = \frac{\partial L}{\partial A^{[2]}} \cdot A^{[1]T}\)
+
+\(\frac{\partial L}{\partial b^{[2]}} = \frac{\partial L}{\partial A^{[2]}} \cdot 1\)
+
+\(\frac{\partial L}{\partial W^{[1]}} = \frac{\partial L}{\partial A^{[2]}} \cdot \frac{\partial Z^{[2]}}{\partial A^{[1]}} \cdot \frac{\partial A^{[1]}}{\partial Z^{[1]}} \cdot \frac{\partial Z^{[1]}}{\partial W^{[1]}}\)
+
+\(\frac{\partial L}{\partial b^{[1]}} = \frac{\partial L}{\partial A^{[2]}} \cdot \frac{\partial Z^{[2]}}{\partial A^{[1]}} \cdot \frac{\partial A^{[1]}}{\partial Z^{[1]}} \cdot \frac{\partial Z^{[1]}}{\partial b^{[1]}}\)
+
+\(\frac{\partial Z^{[2]}}{\partial A^{[1]}} = W^{[2]}\)
+
+\(\frac{\partial Z^{[1]}}{\partial W^{[1]}} = X\)
+
+\(\frac{\partial Z^{[1]}}{\partial b^{[1]}} = 1\)
+
+\(\frac{\partial A^{[1]}}{\partial Z^{[1]}} = A^{[1]} \cdot (1 - A^{[1]}) \rightarrow g^{[1]'}(Z^{[1]})\)
+
+\hypertarget{algoritmo}{%
+\subsubsection{Algoritmo}\label{algoritmo}}
+
+Em redes neurais, não podemos inicializar os pesos com \(0\), assim como
+fazíamos na regressão linear e logística.
+
+Portanto, os mesmos devem ser inicializados de forma randômica, com os
+valores próximos a 0.
+
+O \(b\) deve ser inicializado como um vetor de \(0\) de dimensão
+\(nx1\).
+
+
 \hypertarget{eixos-numpy}{%
 \section{Eixos NumPy}\label{eixos-numpy}}
 
