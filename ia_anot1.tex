@@ -325,17 +325,19 @@
     % Slightly bigger margins than the latex defaults
     
     \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
-    
-    
-
+ 
 \begin{document}
 
     \hypertarget{anotauxe7uxf5es-da-disciplina-de-inteliguxeancia-artificial}{%
-\section{\texorpdfstring{\textbf{Anotações da disciplina de Inteligência
-Artificial}}{Anotações da disciplina de Inteligência Artificial}}\label{anotauxe7uxf5es-da-disciplina-de-inteliguxeancia-artificial}}
+{\texorpdfstring{\Large{\textbf{Anotações da disciplina de Inteligência
+Artificial}}}{Anotações da disciplina de Inteligência Artificial}}\label{anotauxe7uxf5es-da-disciplina-de-inteliguxeancia-artificial}}
+\vspace{5pt}
+
+\textbf{Autores: }Daniel de Leon Bailo da Silva,
+Giuliano Oliveira de Macedo.
 
     \hypertarget{normalizauxe7uxe3o}{%
-\subsection{\texorpdfstring{\textbf{Normalização}}{Normalização}}\label{normalizauxe7uxe3o}}
+\section{\texorpdfstring{\textbf{Normalização}}{Normalização}}\label{normalizauxe7uxe3o}}
 
 \begin{itemize}
 \tightlist
@@ -370,7 +372,7 @@ Artificial}}{Anotações da disciplina de Inteligência Artificial}}\label{anota
 \end{itemize}
 
     \hypertarget{regressuxe3o-linear}{%
-\subsection{\texorpdfstring{\textbf{Regressão
+\section{\texorpdfstring{\textbf{Regressão
 Linear}}{Regressão Linear}}\label{regressuxe3o-linear}}
 
 \hypertarget{observauxe7uxf5es}{%
@@ -488,7 +490,7 @@ Comparando estas métricas:
 Todas estas são \textbf{funções de perda}, porque queremos minimizá-las.
 
 \hypertarget{regressuxe3o-loguxedstica}{%
-\subsection{\texorpdfstring{\textbf{Regressão
+\section{\texorpdfstring{\textbf{Regressão
 Logística}}{Regressão Logística}}\label{regressuxe3o-loguxedstica}}
 
 \hypertarget{observauxe7uxf5es}{%
@@ -561,7 +563,7 @@ quanto o nosso modelo está acertando. A mesma pode ser descrita como:
 \end{itemize}
 
 \hypertarget{redes-neurais}{%
-\subsection{\texorpdfstring{\textbf{Redes
+\section{\texorpdfstring{\textbf{Redes
 Neurais}}{Redes Neurais}}\label{redes-neurais}}
 
 \emph{Variáveis em letra maíuscula representa um \textbf{vetor} e letra
@@ -747,6 +749,220 @@ valores próximos a 0.
 O \(b\) deve ser inicializado como um vetor de \(0\) de dimensão
 \(nx1\).
 
+\hypertarget{algoritmos-genuxe9ticos}{%
+\section{\texorpdfstring{\textbf{Algoritmos
+Genéticos}}{Algoritmos Genéticos}}\label{algoritmos-genuxe9ticos}}
+
+\begin{itemize}
+\tightlist
+\item
+  Algoritmos Genéticos (AGs) são métodos de otimização e busca baseados
+  em mecanismos de evolução de populações de seres vivos.
+\item
+  AGs eficientemente exploram o conjunto de soluções atuais para
+  encontrar novos pontos com melhor solução.
+\end{itemize}
+
+\hypertarget{diferenuxe7as-entre-ag-e-os-muxe9todos-tradicionais}{%
+\subsubsection{Diferenças entre AG e os métodos
+tradicionais}\label{diferenuxe7as-entre-ag-e-os-muxe9todos-tradicionais}}
+
+\begin{itemize}
+\tightlist
+\item
+  Executam a busca a partir de uma população (Conjunto) de pontos, não a
+  partir de um ponto isolado.
+\item
+  Usam regras probabilísticas e não regras determinísticas.
+\item
+  Não necessitam da analise matemática da função ou de algum outro
+  conhecimento auxiliar.
+\item
+  Trabalham num espaço de soluções codificadas (ex. binários), não
+  diretamente no espaço de busca.
+\end{itemize}
+
+\hypertarget{visuxe3o-geral}{%
+\subsubsection{Visão Geral}\label{visuxe3o-geral}}
+
+\begin{itemize}
+\tightlist
+\item
+  AGs iniciam com uma população de soluções(Cromossomos).
+\item
+  Soluções de uma população são usadas para formar uma nova população na
+  esperança de que em média a nova população seja melhor.
+\end{itemize}
+
+Um algoritmo genético mantém uma população de possíveis soluções para o
+problema em mãos, e faz com que ela evolua aplicando iterativamente um
+conjunto de operadores estocásticos.
+
+\hypertarget{operadores-estocuxe1sticos}{%
+\subsubsection{Operadores
+Estocásticos}\label{operadores-estocuxe1sticos}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Selecão} seleciona indivíduos de uma população com
+  probabilidade proporcional ao seu fitness.
+\item
+  \textbf{Recombinação} escolhe dois indivíduos para efetuar a troca de
+  informações formando novos indivíduos.
+\item
+  \textbf{Mutação} aleatoriamente provoca uma pertubação em um
+  indivíduo.
+\end{itemize}
+
+\hypertarget{operadores-genuxe9ticos}{%
+\subsubsection{Operadores Genéticos}\label{operadores-genuxe9ticos}}
+
+\begin{itemize}
+\tightlist
+\item
+  Crossover e mutação são os principais operadores de um AG
+\item
+  A performance do AG é influenciada principalmente por esses
+  operadores.
+\end{itemize}
+
+\hypertarget{fluxo-buxe1sico-do-ag}{%
+\subsubsection{Fluxo Básico do AG}\label{fluxo-buxe1sico-do-ag}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Início} Gerar uma população aleatória de n cromossomos
+\item
+  \textbf{Fitness} Avaliar cada um dos n cromossomos.
+\item
+  \textbf{Testar} Enquanto o critério de parada não for verdadeiro.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Selecão} Selecionar dois cromossomos de acordo com seu
+    fitness
+  \item
+    \textbf{Crossover} Cruzar os cromossomos de acordo com a
+    probabilidade de crossover.
+  \item
+    \textbf{Mutação} Aplicar a probabilidade de mutação para cada
+    posição no cromossomo.
+  \end{itemize}
+\item
+  \textbf{Final} Retornar a melhor solução da população corrente
+\end{itemize}
+
+\hypertarget{componentes-de-um-ag}{%
+\subsubsection{Componentes de um AG}\label{componentes-de-um-ag}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Codificação (gene, cromossomos)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    O método de apresentação e o alfabeto pode variar para cada
+    problema, por exemplo, uma string de bits. Uma sequência inteira
+    corresponde a um \textbf{cromossomo} ou \textbf{indivíduo}, e cada
+    elemento dessa string corresponde a um \textbf{gene}. O ideal é
+    utilizar uma notação que mais se adequa ao problema.
+  \end{itemize}
+\item
+  \textbf{Inicialização (criação da população)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Uma população inicial pode ser gerada aleatoriamente, gerada por
+    alguma heurística ou ainda utilizar alguma população obtida
+    previamente, então o objetivo do AG é tentar melhorar essa
+    população(solução).
+  \end{itemize}
+\item
+  \textbf{Seleção dos pais (reprodução)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Objetivo: focar a busca em regiões promissoras, sobrevivência do
+    mais apto. Gera-se uma população temporária de N indivíduos com
+    probabilidade proporcional ao `fitness'.
+  \end{itemize}
+
+  \(P_{\text{seleção}}(n) = \frac{a(S_n)}{\sum_{i=1}^{N}a(S_i)} \rightarrow \text{Fitness do indivíduo n}\)
+
+  \begin{itemize}
+  \item
+    O método da roleta é o mais conhecido onde se imagina uma roleta
+    fictícia na qual o tamanho de cada slot é proporcional ao `fitness'
+    do indivíduo, assim os indivíduos mais aptos terão mais
+    probabilidade de serem selecionados. \textbf{Desvantagem}:
+    Superindividuos podem causar convergência prematura.
+  \item
+    \textbf{Seleção por ranking linear}\\
+  \item
+    Os indivíduos são classificados através de um rank decrescente. O
+    tamanho do slot de um individuo é dado por:
+  \end{itemize}
+
+  \(p(i) = \frac{1}{n} \left[\beta-2 \cdot (\beta-1) \frac{i-1}{n-1} \right] 1 \leq \beta \leq 2\) \\
+
+  Onde β define a taxa com que diminui um slot em relação ao seguinte. \\
+\item
+  \textbf{Operadores genéticos (mutação, recombinação, crossover)}
+
+  \begin{itemize}
+  \item
+    O processo de \textbf{recombinação} ou \textbf{crossover} envolve
+    mais de um indivíduo e a troca de informações. O crossover age nos
+    cromossomos pais (Selecionados) de forma a gerar novos filhos. O
+    modo mais simples de se realizar o crossover é escolher um ponto
+    aleatório no cromossomo para a troca de informações. Outros tipos de
+    crossover podem ser escolhidos para melhorar o desempenho.
+  \item
+    O próximo passo no processo é a \textbf{mutação}. O objetivo deste
+    operador é evitar que ocorra convergência em um ótimo local. Possui
+    a característica de explorar novas áreas. Um exemplo é simplesmente
+    ligar ou desligar um bit.
+  \end{itemize}
+\item
+  \textbf{Validação da função (ambiente, `fitness')}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Os AGs necessitam de uma avaliação para cada membro da população. A
+    função objetivo proporciona para cada individuo o quão bem adaptado
+    ao ambiente ele está. Comumente denominado ``fitness.'' A solução é
+    tão boa quanto melhor for sua função de validação (`fitness').
+  \end{itemize}
+\item
+  \textbf{Condição de parada.}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Numero de gerações.
+  \item
+    Tempo.
+  \item
+    Uma solução satisfatória.
+  \item
+    Nenhuma melhora detectada num determinado número de gerações.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{imgs/fluxograma_ag.png}
+	\caption{Fluxograma do funcionamento do Algorítmo Genético.}
+	\label{}
+\end{figure}
 
 \hypertarget{eixos-numpy}{%
 \section{Eixos NumPy}\label{eixos-numpy}}
@@ -774,7 +990,7 @@ np.mean(array, axis=0)
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.8\linewidth]{imgs/axis_numpy.jpg}
+  \includegraphics[width=0.5\linewidth]{imgs/axis_numpy.jpg}
   \caption{Eixos NumPy.}
 \end{figure}
 
